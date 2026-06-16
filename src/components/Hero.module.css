@@ -1,0 +1,323 @@
+.hero {
+  padding: 140px 0 40px;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.heroInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Decorative robots — exact Figma positions (1440px canvas) */
+.robotLeft {
+  position: absolute;
+  left: 23px;
+  top: 225px;
+  z-index: 1;
+  width: 375px;
+  height: 358px;
+  /* transform: rotate(-49deg); */
+}
+
+.robotLeft img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+}
+
+.robotRight {
+  position: absolute;
+  left: calc(70.8% - 0px);
+  top: 106px;
+  z-index: 1;
+  width: 295px;
+  height: 255px;
+}
+
+.robotRight img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+}
+
+/* Background orbs */
+.bgOrb1 {
+  position: absolute;
+  width: 645px;
+  height: 564px;
+  left: 50%;
+  top: 200px;
+  transform: translateX(-50%);
+  background: rgba(11, 59, 103, 0.61);
+  filter: blur(77.8px);
+  pointer-events: none;
+}
+
+.bgOrb2 {
+  position: absolute;
+  width: 877px;
+  height: 486px;
+  left: 50%;
+  top: 729px;
+  transform: translateX(-50%);
+  background: rgba(208, 208, 208, 0.42);
+  filter: blur(154px);
+  pointer-events: none;
+}
+
+/* Title */
+.heroTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 60px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -1.5px;
+  color: var(--text-primary);
+  animation: fadeInUp 0.6s ease 0.1s both;
+}
+
+/* Subtitle */
+.heroSubtitle {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 541px;
+  line-height: 29px;
+  text-align: center;
+  animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+/* Download label */
+.downloadLabel {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.98px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  animation: fadeInUp 0.6s ease 0.3s both;
+}
+
+/* Store Buttons */
+.storeButtons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  animation: fadeInUp 0.6s ease 0.35s both;
+}
+
+.storeText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.25;
+}
+
+.storeSmall {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.storeBig {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.375px;
+  color: var(--text-primary);
+}
+
+/* Ecosystem link */
+.ecosystemLink {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: var(--text-label-orange);
+  text-align: center;
+  transition: opacity var(--transition-fast);
+  animation: fadeInUp 0.6s ease 0.38s both;
+}
+
+.ecosystemLink:hover {
+  opacity: 0.8;
+}
+
+/* Trust line */
+.trustLine {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 4px;
+  animation: fadeInUp 0.6s ease 0.4s both;
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--text-secondary);
+}
+
+/* Phones container — images are pre-rotated from Figma export
+   Center: 284x574, Left/Right bounding box: 555x555
+   Tighten container so phones overlap */
+.phonesContainer {
+  position: relative;
+  width: 780px;
+  height: 580px;
+  margin: 40px auto 0;
+  animation: fadeInUp 0.8s ease 0.5s both;
+}
+
+/* Center phone: larger, in front */
+.phoneCenter {
+  position: absolute;
+  z-index: 3;
+  left: 52%;
+  top: -85px;
+  transform: translateX(-50%);
+  width: 515px;
+  filter: drop-shadow(20.85px 12.51px 104px rgba(9, 20, 50, 0.15));
+}
+
+.phoneCenter img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Left phone: pre-rotated image, push inward for overlap */
+.phoneLeft {
+  position: absolute;
+  z-index: 2;
+  left: -33px;
+  top: 40px;
+  width: 495px;
+  filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
+}
+
+.phoneLeft img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Right phone: pre-rotated image, pushed more inward */
+.phoneRight {
+  position: absolute;
+  z-index: 2;
+  right: -35px;
+  top: 40px;
+  width: 495px;
+  filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
+}
+
+.phoneRight img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.phoneGlow {
+  position: absolute;
+  width: 700px;
+  height: 400px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(20, 30, 50, 0.5);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .robotLeft {
+    width: 250px;
+    height: 240px;
+    left: 0;
+    top: 200px;
+  }
+
+  .robotRight {
+    width: 200px;
+    height: 170px;
+    right: 0;
+    left: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  .robotLeft,
+  .robotRight {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 120px 0 40px;
+    min-height: auto;
+  }
+
+  .heroTitle {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  .storeButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .phonesContainer {
+    width: 100%;
+    max-width: 400px;
+    height: 320px;
+    margin-top: 24px;
+  }
+
+  .phoneCenter img {
+    width: 160px !important;
+  }
+
+  .phoneLeft img,
+  .phoneRight img {
+    width: 140px !important;
+  }
+
+  .phoneLeft {
+    left: 5px;
+    top: 30px;
+  }
+
+  .phoneRight {
+    right: 5px;
+    top: 20px;
+  }
+
+  .trustLine {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+}

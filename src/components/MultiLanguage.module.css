@@ -1,0 +1,100 @@
+.multiLang {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.banner {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(20, 28, 41, 0.9));
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.bannerLabel {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--text-label-green);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.bannerTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.langButtons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.langBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.langBtn:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  background: var(--accent-blue-dim);
+}
+
+.langBtn.active {
+  border-color: var(--accent-blue);
+  color: var(--text-primary);
+  background: var(--accent-blue-dim);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.15);
+}
+
+.langFlag {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .banner {
+    padding: 32px 20px;
+  }
+
+  .langButtons {
+    gap: 8px;
+  }
+
+  .langBtn {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+}

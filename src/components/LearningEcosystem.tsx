@@ -1,0 +1,129 @@
+import styles from "./LearningEcosystem.module.css";
+
+const features = [
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="22,12 18,12 15,21 9,3 6,12 2,12" />
+      </svg>
+    ),
+    title: "Track your progress",
+    description: "Visual dashboards & milestone tracking",
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="12,2 2,7 12,12 22,7" />
+        <polyline points="2,17 12,22 22,17" />
+        <polyline points="2,12 12,17 22,12" />
+      </svg>
+    ),
+    title: "Lessons + simulations",
+    description: "Learn by doing, then practice in the real-world",
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+      </svg>
+    ),
+    title: "XP & streaks",
+    description: "Gamified learning with XP points & daily streaks",
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+        <line x1="8" y1="21" x2="16" y2="21" />
+        <line x1="12" y1="17" x2="12" y2="21" />
+      </svg>
+    ),
+    title: "AI quests",
+    description: "AI-created challenges that adapt to your pace",
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+      </svg>
+    ),
+    title: "AI Lab",
+    description: "Prompt-first, auto-evaluate, hands-on tools",
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="8" r="7" />
+        <polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88" />
+      </svg>
+    ),
+    title: "Certification",
+    description: "Proof of skill, auto-evaluated by AI standards",
+  },
+];
+
+export default function LearningEcosystem() {
+  return (
+    <section id="features" className={`section ${styles.ecosystem}`} aria-label="Learning Ecosystem">
+      <div className="container">
+        <p className="section__label">INSIDE THE APP</p>
+        <h2 className="section__title">A learning ecosystem</h2>
+        <p className="section__subtitle">
+          Project walkthroughs, gamified progress, XP, and streaks — built to actually finish.
+        </p>
+
+        <div className={styles.content}>
+          {/* Feature List */}
+          <div className={styles.featureList}>
+            {features.map((feature, i) => (
+              <div
+                key={feature.title}
+                className={styles.featureItem}
+                style={{ animationDelay: `${i * 0.1}s` }}
+              >
+                <div className={styles.featureIcon}>{feature.icon}</div>
+                <div className={styles.featureText}>
+                  <h3 className={styles.featureTitle}>{feature.title}</h3>
+                  <p className={styles.featureDesc}>{feature.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Phone Mockup */}
+          <div className={styles.mockupSide}>
+            <div className={styles.mockupGlow} />
+            <div className={styles.phoneBevel}>
+              <div className={styles.phoneScreen}>
+                <div className={styles.screenHeader}>
+                  <div className={styles.screenDot} />
+                  <span className={styles.screenLogo}>nuaiy</span>
+                  <div className={styles.screenDot} />
+                </div>
+                <div className={styles.screenBody}>
+                  <div className={styles.screenCard}>
+                    <div className={styles.cardTitle}>Today&apos;s Quest</div>
+                    <div className={styles.cardBar}>
+                      <div className={styles.cardBarFill} style={{ width: '72%' }} />
+                    </div>
+                    <div className={styles.cardMeta}>72% complete</div>
+                  </div>
+                  <div className={styles.screenCard}>
+                    <div className={styles.cardTitle}>XP Earned</div>
+                    <div className={styles.xpValue}>2,450 XP</div>
+                    <div className={styles.cardMeta}>🔥 14 day streak</div>
+                  </div>
+                  <div className={styles.screenCard}>
+                    <div className={styles.cardTitle}>AI Lab</div>
+                    <div className={styles.cardMeta}>3 tools unlocked</div>
+                    <div className={styles.screenBtn}>Enter Lab →</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
