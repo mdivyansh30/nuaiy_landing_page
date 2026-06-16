@@ -21,8 +21,8 @@
   left: 23px;
   top: 225px;
   z-index: 1;
-  width: 375px;
-  height: 358px;
+  width: 563px;
+  height: 537px;
   /* transform: rotate(-49deg); */
 }
 
@@ -37,8 +37,8 @@
   left: calc(70.8% - 0px);
   top: 106px;
   z-index: 1;
-  width: 295px;
-  height: 255px;
+  width: 443px;
+  height: 383px;
 }
 
 .robotRight img {

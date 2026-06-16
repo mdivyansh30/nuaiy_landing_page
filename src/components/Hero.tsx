@@ -6,10 +6,12 @@ export default function Hero() {
     <section className={styles.hero} aria-label="Hero">
       {/* Background decorative robots */}
       <div className={styles.robotLeft} aria-hidden="true">
-        <Image src="/images/leftsiderobot.png" alt="" width={209} height={313} priority />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/leftsiderobot.png" alt="" />
       </div>
       <div className={styles.robotRight} aria-hidden="true">
-        <Image src="/images/rightrobot.png" alt="" width={295} height={255} priority />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/rightrobot.png" alt="" />
       </div>
 
       {/* Blur orbs */}
