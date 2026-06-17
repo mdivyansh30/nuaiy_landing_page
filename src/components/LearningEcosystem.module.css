@@ -4,7 +4,7 @@
 
 .content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 2fr;
   gap: 60px;
   align-items: center;
 }
@@ -75,6 +75,12 @@
   position: relative;
   display: flex;
   justify-content: center;
+  background: #040319;
+  border: 1px solid #00ACBA;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 0 10.6px #98F7F5;
+  padding: 32px;
+  overflow: hidden;
 }
 
 .mockupGlow {
