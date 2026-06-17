@@ -36,112 +36,29 @@
   line-height: 1.5;
 }
 
-/* Certificate Mockup */
+/* Certificate Image */
 .certMockup {
   display: flex;
   justify-content: center;
   perspective: 800px;
 }
 
-.certCard {
-  width: 340px;
-  background: linear-gradient(145deg, #0f1d30, #0a1525);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  text-align: center;
-  box-shadow:
-    0 0 30px rgba(59, 130, 246, 0.08),
-    0 20px 60px rgba(0, 0, 0, 0.4);
-  position: relative;
-  overflow: hidden;
+.certImage {
+  width: 527px;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #00ACBA;
+  border-radius: 12px;
+  box-shadow: 0 0 30px 20px rgba(0, 155, 193, 0.63);
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.5s ease;
 }
 
-.certCard:hover {
-  transform: rotateX(4deg) rotateY(-3deg) translateY(-6px);
-  box-shadow:
-    0 0 40px rgba(59, 130, 246, 0.15),
-    0 30px 80px rgba(0, 0, 0, 0.5);
+.certImage:hover {
+  transform: rotateX(3deg) rotateY(-2deg) translateY(-6px);
+  box-shadow: 0 0 40px 24px rgba(0, 155, 193, 0.7);
 }
 
-.certCard::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.certHeader {
-  margin-bottom: 20px;
-}
-
-.certLogo {
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--accent-blue);
-}
-
-.certName {
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: 0.05em;
-  margin-bottom: 4px;
-}
-
-.certSub {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--text-dim);
-  text-transform: uppercase;
-}
-
-.certDivider {
-  width: 60px;
-  height: 1px;
-  background: var(--border-subtle);
-  margin: 20px auto;
-}
-
-.certIssuedTo {
-  font-size: 0.7rem;
-  color: var(--text-dim);
-  margin-bottom: 4px;
-}
-
-.certRecipient {
-  font-family: var(--font-heading);
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  font-style: italic;
-  margin-bottom: 20px;
-}
-
-.certSignature {
-  margin-top: 16px;
-}
-
-.sigLine {
-  width: 100px;
-  height: 1px;
-  background: var(--text-dim);
-  margin: 0 auto 8px;
-}
-
-.sigName {
-  font-size: 0.7rem;
-  color: var(--text-dim);
-}
 
 /* Stats Grid */
 .statsGrid {
