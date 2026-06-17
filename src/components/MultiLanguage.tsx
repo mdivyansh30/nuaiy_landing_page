@@ -4,6 +4,12 @@ import { useScrollReveal } from "@/lib/useScrollReveal";
 import { useStaggerReveal } from "@/lib/useStaggerReveal";
 import styles from "./MultiLanguage.module.css";
 
+const languages = [
+  { name: "English", flag: "/images/flags/eng.png" },
+  { name: "Tamil", flag: "/images/flags/tamil.png" },
+  { name: "Sinhala", flag: "/images/flags/sinhala.png" },
+];
+
 export default function MultiLanguage() {
   const { ref: bannerRef, isVisible: bannerVisible } = useScrollReveal();
   const { containerRef: btnRef, isVisible: btnVisible } = useStaggerReveal();
@@ -17,30 +23,25 @@ export default function MultiLanguage() {
         >
           <p className={styles.bannerLabel}>MULTILINGUAL BY DESIGN</p>
           <h2 className={styles.bannerTitle}>
-            Available in <span className="gradient-text">3 languages</span>, live in Sri Lanka
+            Available in 3 <span className={styles.highlight}>languages</span>, live in 175 countries.
           </h2>
 
           <div className={styles.langButtons} ref={btnRef as React.RefObject<HTMLDivElement>}>
-            <button className={`${styles.langBtn} ${styles.active} stagger-child ${btnVisible ? "stagger-child--visible" : ""}`} style={{ "--stagger-index": 0 } as React.CSSProperties}>
-              <span className={styles.langFlag}>🇬🇧</span>
-              <span>English</span>
-            </button>
-            <button className={`${styles.langBtn} stagger-child ${btnVisible ? "stagger-child--visible" : ""}`} style={{ "--stagger-index": 1 } as React.CSSProperties}>
-              <span className={styles.langFlag}>🇱🇰</span>
-              <span>සිංහල</span>
-            </button>
-            <button className={`${styles.langBtn} stagger-child ${btnVisible ? "stagger-child--visible" : ""}`} style={{ "--stagger-index": 2 } as React.CSSProperties}>
-              <span className={styles.langFlag}>🇱🇰</span>
-              <span>தமிழ்</span>
-            </button>
-            <button className={`${styles.langBtn} stagger-child ${btnVisible ? "stagger-child--visible" : ""}`} style={{ "--stagger-index": 3 } as React.CSSProperties}>
-              <span className={styles.langFlag}>🇯🇵</span>
-              <span>日本語</span>
-            </button>
-            <button className={`${styles.langBtn} stagger-child ${btnVisible ? "stagger-child--visible" : ""}`} style={{ "--stagger-index": 4 } as React.CSSProperties}>
-              <span className={styles.langFlag}>🇰🇷</span>
-              <span>한국어</span>
-            </button>
+            {languages.map((lang, i) => (
+              <button
+                key={lang.name}
+                className={`${styles.langBtn} stagger-child ${btnVisible ? "stagger-child--visible" : ""}`}
+                style={{ "--stagger-index": i } as React.CSSProperties}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={lang.flag}
+                  alt={`${lang.name} flag`}
+                  className={styles.flagImg}
+                />
+                <span>{lang.name}</span>
+              </button>
+            ))}
           </div>
         </div>
       </div>

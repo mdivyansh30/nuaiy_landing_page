@@ -3,33 +3,46 @@
   padding-bottom: 40px;
 }
 
+/* Banner card — Figma-accurate gradient + border + shadow */
 .banner {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(20, 28, 41, 0.9));
-  border: 1px solid var(--border-card);
+  background: linear-gradient(
+    180deg,
+    #1A2F4F 0%,
+    #182D4D 14%,
+    #172B4B 28%,
+    #152848 42%,
+    #132646 56%,
+    #122444 70%,
+    #102242 100%
+  );
+  border-top: 1px solid #00ACBA;
   border-radius: var(--radius-xl);
   padding: 48px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  box-shadow: 0px 0px 10.6px #98F7F5;
 }
 
-.banner::before {
+/* Inner glow radial */
+.banner::after {
   content: '';
   position: absolute;
-  top: -50%;
+  top: -60%;
   left: 50%;
   transform: translateX(-50%);
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 172, 186, 0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
 .bannerLabel {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  color: var(--text-label-green);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.16px;
+  color: var(--text-secondary);
   margin-bottom: 12px;
   text-transform: uppercase;
   position: relative;
@@ -44,10 +57,16 @@
   position: relative;
 }
 
+/* "languages" keyword highlight — matches Figma blue */
+.highlight {
+  color: #3B9EE8;
+}
+
+/* Language buttons row */
 .langButtons {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 14px;
   flex-wrap: wrap;
   position: relative;
 }
@@ -55,46 +74,38 @@
 .langBtn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid var(--border-subtle);
+  gap: 10px;
+  padding: 10px 24px;
+  background: rgba(10, 18, 38, 0.7);
+  border: 1px solid rgba(199, 210, 221, 0.15);
   border-radius: var(--radius-full);
-  color: var(--text-secondary);
-  font-size: 0.85rem;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .langBtn:hover {
-  border-color: var(--accent-blue);
-  color: var(--accent-blue);
-  background: var(--accent-blue-dim);
-  transform: scale(1.06);
-  box-shadow: 0 0 16px rgba(59, 130, 246, 0.2);
+  border-color: #00ACBA;
+  background: rgba(0, 172, 186, 0.08);
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 0 16px rgba(152, 247, 245, 0.2);
 }
 
-.langBtn:hover .langFlag {
-  animation: flagBounce 0.5s ease;
+/* Flag image — circular */
+.flagImg {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes flagBounce {
-  0%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-4px); }
-  60% { transform: translateY(-2px); }
-}
-
-.langBtn.active {
-  border-color: var(--accent-blue);
-  color: var(--text-primary);
-  background: var(--accent-blue-dim);
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.15);
-}
-
-.langFlag {
-  font-size: 1.1rem;
-  display: inline-block;
+.langBtn:hover .flagImg {
+  transform: scale(1.15);
 }
 
 @media (max-width: 768px) {
@@ -103,11 +114,16 @@
   }
 
   .langButtons {
-    gap: 8px;
+    gap: 10px;
   }
 
   .langBtn {
-    padding: 8px 14px;
-    font-size: 0.8rem;
+    padding: 8px 18px;
+    font-size: 0.85rem;
+  }
+
+  .flagImg {
+    width: 24px;
+    height: 24px;
   }
 }

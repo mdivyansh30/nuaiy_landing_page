@@ -5,9 +5,9 @@ import { useStaggerReveal } from "@/lib/useStaggerReveal";
 import styles from "./Certification.module.css";
 
 const stats = [
-  { value: "Sri Lanka", label: "Country/live" },
+  { value: "175", label: "Countries live" },
   { value: "3", label: "Languages" },
-  { value: "4", label: "Course paths" },
+  { value: "6", label: "Career paths" },
   { value: "6", label: "Ecosystem features" },
 ];
 

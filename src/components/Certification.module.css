@@ -166,16 +166,19 @@
 }
 
 .statCard:hover .statValue {
-  text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  filter: brightness(1.15);
 }
 
 .statValue {
   font-family: var(--font-heading);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 800;
-  color: var(--accent-blue);
+  background: linear-gradient(90deg, #005AAD 0%, #01B7BB 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 6px;
-  transition: text-shadow 0.4s ease;
+  transition: filter 0.4s ease;
 }
 
 .statLabel {
