@@ -3,46 +3,34 @@
 }
 
 .ctaBox {
-  background: #242526;
+  background: linear-gradient(135deg, #1a2740 0%, #0f1a2e 60%, #162236 100%);
+  border: 1px solid #1e4d7b;
   border-radius: var(--radius-xl);
   box-shadow: 0px 0px 6.3px #00ADC8;
   padding: 60px 56px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  min-height: 380px;
 }
 
-/* Animated border glow sweep */
-.ctaBox::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: var(--radius-xl);
-  background: conic-gradient(
-    from 0deg,
-    transparent 0%,
-    rgba(0, 173, 200, 0.4) 10%,
-    transparent 20%,
-    transparent 100%
-  );
-  z-index: -1;
-  animation: borderSweep 4s linear infinite;
-}
 
-@keyframes borderSweep {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
+/* ── Left: content ─────────────────────── */
 .ctaContent {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-width: 600px;
+  max-width: 500px;
+  flex-shrink: 0;
+  z-index: 2;
 }
 
 .ctaLabel {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 2.16px;
   text-transform: uppercase;
@@ -51,24 +39,26 @@
 
 .ctaTitle {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 42px);
+  font-size: clamp(1.8rem, 3.5vw, 42px);
   font-weight: 700;
-  letter-spacing: -1.05px;
-  line-height: 1.15;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
   color: var(--text-primary);
 }
 
 .ctaSubtitle {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 15px;
   color: var(--text-secondary);
-  line-height: 26px;
+  line-height: 1.6;
+  max-width: 420px;
 }
 
 .ctaButtons {
   display: flex;
   gap: 12px;
   margin-top: 8px;
+  flex-wrap: wrap;
 }
 
 .storeBtn {
@@ -120,9 +110,98 @@
   margin-top: 4px;
 }
 
-@media (max-width: 768px) {
+/* ── Right: iPhone mockup (single pre-composed image) ── */
+.phonesWrapper {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+/* Soft ambient glow behind the phones */
+.phonesWrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 420px;
+  height: 420px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 173, 200, 0.35) 0%,
+    rgba(0, 90, 173, 0.15) 40%,
+    transparent 70%
+  );
+  animation: glowPulse 3s ease-in-out infinite alternate;
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(30px);
+}
+
+@keyframes glowPulse {
+  0% { opacity: 0.6; transform: translate(-50%, -50%) scale(0.95); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.phonesImg {
+  display: block;
+  width: 480px;
+  height: auto;
+  max-width: none !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Responsive ────────────────────────── */
+@media (max-width: 1200px) {
+  .phonesImg {
+    width: 400px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .phonesImg {
+    width: 340px;
+  }
+
   .ctaBox {
-    padding: 40px 24px;
+    padding: 48px 40px;
+  }
+}
+
+@media (max-width: 860px) {
+  .ctaBox {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px 32px;
+    min-height: unset;
+    overflow: visible;
+  }
+
+  .phonesWrapper {
+    position: relative;
+    right: unset;
+    top: unset;
+    transform: none;
+    align-self: center;
+  }
+
+  .phonesImg {
+    width: 360px;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .ctaBox {
+    padding: 36px 24px;
+  }
+
+  .phonesImg {
+    width: 280px;
   }
 
   .ctaButtons {

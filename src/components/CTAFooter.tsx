@@ -13,13 +13,15 @@ export default function CTAFooter() {
           className={`${styles.ctaBox} reveal-scale ${isVisible ? "reveal-scale--visible" : ""}`}
           ref={ref as React.RefObject<HTMLDivElement>}
         >
+          {/* Left: text + buttons */}
           <div className={styles.ctaContent}>
-            <p className={styles.ctaLabel}>Get Brainified</p>
+            <p className={styles.ctaLabel}>GET BRAINIFIED</p>
             <h2 className={styles.ctaTitle}>
-              OWN YOUR<br />FUTURE here
+              Can be <span>OWN YOUR FUTURE</span> here
             </h2>
             <p className={styles.ctaSubtitle}>
-              Pick your path. Meet your AI mentor. Ship your first project in the week.
+              Pick your path. Meet your AI mentor. Ship your first project this week
+              {" "}— and own the future before it owns you.
             </p>
 
             <div className={styles.ctaButtons}>
@@ -44,8 +46,18 @@ export default function CTAFooter() {
             </div>
 
             <p className={styles.ctaNote}>
-              Available on iOS &amp; Android · Free to start · No credit card required
+              iOS · Android · Live in 175 countries · 9 languages
             </p>
+          </div>
+
+          {/* Right: pre-composed iPhone mockup */}
+          <div className={styles.phonesWrapper}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/get_brainified/iphone_get.png"
+              alt="Nuaiy app screens showing Learning Paths and course content"
+              className={styles.phonesImg}
+            />
           </div>
         </div>
       </div>
