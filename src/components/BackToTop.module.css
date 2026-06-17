@@ -1,0 +1,53 @@
+.btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 1000;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 28, 41, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-teal);
+  border-radius: 50%;
+  color: var(--accent-teal);
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(0, 239, 250, 0.2),
+              0 4px 16px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
+
+  /* Hidden by default */
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  pointer-events: none;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.btn:hover {
+  box-shadow: 0 0 24px rgba(0, 239, 250, 0.4),
+              0 4px 24px rgba(0, 0, 0, 0.5);
+  transform: translateY(-3px) scale(1.08);
+  background: rgba(20, 28, 41, 0.95);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .btn {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+}

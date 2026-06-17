@@ -16,7 +16,7 @@ export default function CTAFooter() {
           <div className={styles.ctaContent}>
             <p className={styles.ctaLabel}>Get Brainified</p>
             <h2 className={styles.ctaTitle}>
-              Can be OWN YOUR<br />FUTURE here
+              OWN YOUR<br />FUTURE here
             </h2>
             <p className={styles.ctaSubtitle}>
               Pick your path. Meet your AI mentor. Ship your first project in the week.

@@ -10,6 +10,8 @@ import Certification from "@/components/Certification";
 import FAQ from "@/components/FAQ";
 import CTAFooter from "@/components/CTAFooter";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
+import BackToTop from "@/components/BackToTop";
 import { faqSchemaData } from "@/lib/faq-data";
 
 export default function Home() {
@@ -20,7 +22,9 @@ export default function Home() {
         {JSON.stringify(faqSchemaData)}
       </script>
 
+      <ScrollProgress />
       <Navbar />
+      <BackToTop />
 
       <main id="main-content">
         <Hero />
