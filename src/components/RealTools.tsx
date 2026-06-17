@@ -1,3 +1,7 @@
+"use client";
+
+import { useScrollReveal } from "@/lib/useScrollReveal";
+import { useStaggerReveal } from "@/lib/useStaggerReveal";
 import styles from "./RealTools.module.css";
 
 const tools = [
@@ -70,24 +74,32 @@ const tools = [
 ];
 
 export default function RealTools() {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
+  const { containerRef: gridRef, isVisible: gridVisible } = useStaggerReveal();
+
   return (
     <section id="tools" className={`section ${styles.tools}`} aria-label="Real Tools">
       <div className="container">
-        <p className="section__label">USE REAL TOOLS</p>
-        <h2 className="section__title">
-          The same tools the pros are billing for.
-        </h2>
-        <p className="section__subtitle">
-          Not toy projects. Practice with the actual tools of the trade so you don&apos;t have to
-          learn twice to use — regardless of the language you choose.
-        </p>
+        <div
+          ref={headerRef as React.RefObject<HTMLDivElement>}
+          className={`reveal ${headerVisible ? "reveal--visible" : ""}`}
+        >
+          <p className="section__label">USE REAL TOOLS</p>
+          <h2 className="section__title">
+            The same tools the pros are billing for.
+          </h2>
+          <p className="section__subtitle">
+            Not toy projects. Practice with the actual tools of the trade so you don&apos;t have to
+            learn twice to use — regardless of the language you choose.
+          </p>
+        </div>
 
-        <div className={styles.toolGrid}>
+        <div className={styles.toolGrid} ref={gridRef as React.RefObject<HTMLDivElement>}>
           {tools.map((tool, i) => (
             <article
               key={tool.name}
-              className={`glass-card ${styles.toolCard}`}
-              style={{ animationDelay: `${i * 0.08}s` }}
+              className={`${styles.toolCard} stagger-child ${gridVisible ? "stagger-child--visible" : ""}`}
+              style={{ "--stagger-index": i } as React.CSSProperties}
             >
               <div
                 className={styles.toolIcon}

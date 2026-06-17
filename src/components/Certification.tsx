@@ -1,3 +1,7 @@
+"use client";
+
+import { useScrollReveal } from "@/lib/useScrollReveal";
+import { useStaggerReveal } from "@/lib/useStaggerReveal";
 import styles from "./Certification.module.css";
 
 const stats = [
@@ -8,35 +12,54 @@ const stats = [
 ];
 
 export default function Certification() {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
+  const { ref: certRef, isVisible: certVisible } = useScrollReveal({ threshold: 0.2 });
+  const { containerRef: statsRef, isVisible: statsVisible } = useStaggerReveal();
+  const { containerRef: featRef, isVisible: featVisible } = useStaggerReveal();
+
   return (
     <section id="certifications" className={`section ${styles.cert}`} aria-label="Certification">
       <div className="container">
-        <p className="section__label">NUAIY CERTIFICATION</p>
-        <h2 className={`section__title ${styles.certTitle}`}>
-          Proof of skill, not proof of<br />attendance.
-        </h2>
-        <p className="section__subtitle">
-          NUAIY certifications aren&apos;t participation certificates — they have to be
-          <strong> proof of work</strong>. Each certification is auto-evaluated for completing a
-          course and building a project that passes all evaluation standards set by AI.
-        </p>
+        <div
+          ref={headerRef as React.RefObject<HTMLDivElement>}
+          className={`reveal ${headerVisible ? "reveal--visible" : ""}`}
+        >
+          <p className="section__label">NUAIY CERTIFICATION</p>
+          <h2 className={`section__title ${styles.certTitle}`}>
+            Proof of skill, not proof of<br />attendance.
+          </h2>
+          <p className="section__subtitle">
+            NUAIY certifications aren&apos;t participation certificates — they have to be
+            <strong> proof of work</strong>. Each certification is auto-evaluated for completing a
+            course and building a project that passes all evaluation standards set by AI.
+          </p>
+        </div>
 
         <div className={styles.certContent}>
           <div className={styles.certInfo}>
-            <ul className={styles.certFeatures}>
-              <li className={styles.certFeature}>
+            <ul className={styles.certFeatures} ref={featRef as React.RefObject<HTMLUListElement>}>
+              <li
+                className={`${styles.certFeature} stagger-child ${featVisible ? "stagger-child--visible" : ""}`}
+                style={{ "--stagger-index": 0 } as React.CSSProperties}
+              >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <polyline points="20,6 9,17 4,12" />
                 </svg>
                 <span>Project-validated, not quiz-validated</span>
               </li>
-              <li className={styles.certFeature}>
+              <li
+                className={`${styles.certFeature} stagger-child ${featVisible ? "stagger-child--visible" : ""}`}
+                style={{ "--stagger-index": 1 } as React.CSSProperties}
+              >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <polyline points="20,6 9,17 4,12" />
                 </svg>
                 <span>AI-graded performance rubrics</span>
               </li>
-              <li className={styles.certFeature}>
+              <li
+                className={`${styles.certFeature} stagger-child ${featVisible ? "stagger-child--visible" : ""}`}
+                style={{ "--stagger-index": 2 } as React.CSSProperties}
+              >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <polyline points="20,6 9,17 4,12" />
                 </svg>
@@ -46,7 +69,10 @@ export default function Certification() {
           </div>
 
           {/* Certificate Mockup */}
-          <div className={styles.certMockup}>
+          <div
+            className={`${styles.certMockup} reveal-scale ${certVisible ? "reveal-scale--visible" : ""}`}
+            ref={certRef as React.RefObject<HTMLDivElement>}
+          >
             <div className={styles.certCard}>
               <div className={styles.certHeader}>
                 <span className={styles.certLogo}>nuaiy</span>
@@ -65,9 +91,13 @@ export default function Certification() {
         </div>
 
         {/* Stats */}
-        <div className={styles.statsGrid}>
-          {stats.map((stat) => (
-            <div key={stat.label} className={styles.statCard}>
+        <div className={styles.statsGrid} ref={statsRef as React.RefObject<HTMLDivElement>}>
+          {stats.map((stat, i) => (
+            <div
+              key={stat.label}
+              className={`${styles.statCard} stagger-child ${statsVisible ? "stagger-child--visible" : ""}`}
+              style={{ "--stagger-index": i } as React.CSSProperties}
+            >
               <div className={styles.statValue}>{stat.value}</div>
               <div className={styles.statLabel}>{stat.label}</div>
             </div>

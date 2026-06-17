@@ -1,3 +1,7 @@
+"use client";
+
+import { useScrollReveal } from "@/lib/useScrollReveal";
+import { useStaggerReveal } from "@/lib/useStaggerReveal";
 import styles from "./LearningEcosystem.module.css";
 
 const features = [
@@ -63,23 +67,32 @@ const features = [
 ];
 
 export default function LearningEcosystem() {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
+  const { containerRef: listRef, isVisible: listVisible } = useStaggerReveal();
+  const { ref: mockupRef, isVisible: mockupVisible } = useScrollReveal({ threshold: 0.2 });
+
   return (
     <section id="features" className={`section ${styles.ecosystem}`} aria-label="Learning Ecosystem">
       <div className="container">
-        <p className="section__label">INSIDE THE APP</p>
-        <h2 className="section__title">A learning ecosystem</h2>
-        <p className="section__subtitle">
-          Project walkthroughs, gamified progress, XP, and streaks — built to actually finish.
-        </p>
+        <div
+          ref={headerRef as React.RefObject<HTMLDivElement>}
+          className={`reveal ${headerVisible ? "reveal--visible" : ""}`}
+        >
+          <p className="section__label">INSIDE THE APP</p>
+          <h2 className="section__title">A learning ecosystem</h2>
+          <p className="section__subtitle">
+            Project walkthroughs, gamified progress, XP, and streaks — built to actually finish.
+          </p>
+        </div>
 
         <div className={styles.content}>
           {/* Feature List */}
-          <div className={styles.featureList}>
+          <div className={styles.featureList} ref={listRef as React.RefObject<HTMLDivElement>}>
             {features.map((feature, i) => (
               <div
                 key={feature.title}
-                className={styles.featureItem}
-                style={{ animationDelay: `${i * 0.1}s` }}
+                className={`${styles.featureItem} stagger-child ${listVisible ? "stagger-child--visible" : ""}`}
+                style={{ "--stagger-index": i } as React.CSSProperties}
               >
                 <div className={styles.featureIcon}>{feature.icon}</div>
                 <div className={styles.featureText}>
@@ -91,7 +104,10 @@ export default function LearningEcosystem() {
           </div>
 
           {/* Phone Mockup */}
-          <div className={styles.mockupSide}>
+          <div
+            className={`${styles.mockupSide} reveal-right ${mockupVisible ? "reveal-right--visible" : ""}`}
+            ref={mockupRef as React.RefObject<HTMLDivElement>}
+          >
             <div className={styles.mockupGlow} />
             <div className={styles.phoneBevel}>
               <div className={styles.phoneScreen}>

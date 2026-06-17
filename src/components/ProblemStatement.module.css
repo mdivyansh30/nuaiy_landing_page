@@ -30,6 +30,28 @@
   line-height: 1.3;
 }
 
+/* Gradient shimmer sweep on the keyword */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--accent-green) 0%,
+    var(--accent-teal) 40%,
+    #fff 50%,
+    var(--accent-teal) 60%,
+    var(--accent-green) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 3s ease-in-out infinite;
+}
+
+@keyframes textShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 .subtext {
   font-size: 1rem;
   color: var(--text-muted);

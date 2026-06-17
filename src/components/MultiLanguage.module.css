@@ -64,13 +64,25 @@
   font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .langBtn:hover {
   border-color: var(--accent-blue);
   color: var(--accent-blue);
   background: var(--accent-blue-dim);
+  transform: scale(1.06);
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.2);
+}
+
+.langBtn:hover .langFlag {
+  animation: flagBounce 0.5s ease;
+}
+
+@keyframes flagBounce {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-4px); }
+  60% { transform: translateY(-2px); }
 }
 
 .langBtn.active {
@@ -82,6 +94,7 @@
 
 .langFlag {
   font-size: 1.1rem;
+  display: inline-block;
 }
 
 @media (max-width: 768px) {

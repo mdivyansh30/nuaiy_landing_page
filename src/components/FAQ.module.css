@@ -18,6 +18,19 @@
 
 .faqItem {
   width: 100%;
+  border-left: 3px solid transparent;
+  transition: border-color 0.3s ease,
+              background 0.3s ease;
+}
+
+.faqItem:hover {
+  border-left-color: var(--accent-teal);
+  background: rgba(0, 239, 250, 0.02);
+}
+
+.faqOpen {
+  border-left-color: var(--accent-teal);
+  background: rgba(0, 239, 250, 0.03);
 }
 
 .faqQuestion {
@@ -60,16 +73,30 @@
   font-weight: 400;
   line-height: 24px;
   color: #FFFFFF;
-  transition: all var(--transition-base);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
 }
 
 .faqOpen .faqIcon {
-  transform: rotate(45deg);
+  transform: rotate(45deg) scale(1.05);
+  box-shadow: 0px 0px 0px #0783F5, 3px 2px 24px #62B4FF;
 }
 
+/* Smooth expand/collapse via max-height + padding transition */
 .faqAnswer {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 24px;
+  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s ease;
+  opacity: 0;
+}
+
+.faqOpen .faqAnswer {
+  max-height: 300px;
   padding: 0 24px 20px;
-  animation: fadeIn 0.3s ease;
+  opacity: 1;
 }
 
 .faqAnswer p {
@@ -87,6 +114,10 @@
   }
 
   .faqAnswer {
+    padding: 0 18px;
+  }
+
+  .faqOpen .faqAnswer {
     padding: 0 18px 16px;
   }
 

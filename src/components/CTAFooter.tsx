@@ -1,10 +1,18 @@
+"use client";
+
+import { useScrollReveal } from "@/lib/useScrollReveal";
 import styles from "./CTAFooter.module.css";
 
 export default function CTAFooter() {
+  const { ref, isVisible } = useScrollReveal({ threshold: 0.2 });
+
   return (
     <section id="download" className={`section ${styles.cta}`} aria-label="Download the app">
       <div className="container">
-        <div className={styles.ctaBox}>
+        <div
+          className={`${styles.ctaBox} reveal-scale ${isVisible ? "reveal-scale--visible" : ""}`}
+          ref={ref as React.RefObject<HTMLDivElement>}
+        >
           <div className={styles.ctaContent}>
             <p className={styles.ctaLabel}>Get Brainified</p>
             <h2 className={styles.ctaTitle}>

@@ -1,3 +1,7 @@
+"use client";
+
+import { useScrollReveal } from "@/lib/useScrollReveal";
+import { useStaggerReveal } from "@/lib/useStaggerReveal";
 import styles from "./Mentors.module.css";
 
 const mentors = [
@@ -34,21 +38,29 @@ const mentors = [
 ];
 
 export default function Mentors() {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
+  const { containerRef: gridRef, isVisible: gridVisible } = useStaggerReveal();
+
   return (
     <section id="mentors" className={`section ${styles.mentors}`} aria-label="AI Mentors">
       <div className="container">
-        <p className="section__label">Meet your mentors</p>
-        <h2 className="section__title">AI experts. Real specialties.</h2>
-        <p className="section__subtitle">
-          Seven AI Mentors, each leading the path they&apos;ve actually lived.
-        </p>
+        <div
+          ref={headerRef as React.RefObject<HTMLDivElement>}
+          className={`reveal ${headerVisible ? "reveal--visible" : ""}`}
+        >
+          <p className="section__label">Meet your mentors</p>
+          <h2 className="section__title">AI experts. Real specialties.</h2>
+          <p className="section__subtitle">
+            Seven AI Mentors, each leading the path they&apos;ve actually lived.
+          </p>
+        </div>
 
-        <div className={styles.mentorGrid}>
+        <div className={styles.mentorGrid} ref={gridRef as React.RefObject<HTMLDivElement>}>
           {mentors.map((mentor, i) => (
             <article
               key={mentor.name}
-              className={styles.mentorCard}
-              style={{ animationDelay: `${i * 0.08}s` }}
+              className={`${styles.mentorCard} stagger-child ${gridVisible ? "stagger-child--visible" : ""}`}
+              style={{ "--stagger-index": i } as React.CSSProperties}
             >
               {/* Everything inside the card box */}
               <div className={styles.cardBox}>

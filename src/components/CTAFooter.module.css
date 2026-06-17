@@ -11,6 +11,28 @@
   overflow: hidden;
 }
 
+/* Animated border glow sweep */
+.ctaBox::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: var(--radius-xl);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    rgba(0, 173, 200, 0.4) 10%,
+    transparent 20%,
+    transparent 100%
+  );
+  z-index: -1;
+  animation: borderSweep 4s linear infinite;
+}
+
+@keyframes borderSweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .ctaContent {
   display: flex;
   flex-direction: column;
@@ -59,12 +81,14 @@
   box-shadow: var(--glow-teal);
   border-radius: var(--radius-md);
   text-decoration: none;
-  transition: all var(--transition-base);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .storeBtn:hover {
   background: rgba(246, 243, 255, 0.1);
-  transform: translateY(-1px);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0px 0px 20px #98F7F5,
+              0 4px 20px rgba(0, 239, 250, 0.2);
 }
 
 .storeText {

@@ -23,7 +23,7 @@
   z-index: 1;
   width: 563px;
   height: 537px;
-  /* transform: rotate(-49deg); */
+  animation: robotFloat 6s ease-in-out infinite;
 }
 
 .robotLeft img {
@@ -39,12 +39,20 @@
   z-index: 1;
   width: 443px;
   height: 383px;
+  animation: robotFloat 7s ease-in-out 0.5s infinite;
 }
 
 .robotRight img {
   width: 100% !important;
   height: 100% !important;
   object-fit: contain;
+}
+
+@keyframes robotFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(1.5deg); }
+  50% { transform: translateY(-18px) rotate(0deg); }
+  75% { transform: translateY(-8px) rotate(-1.5deg); }
 }
 
 /* Background orbs */
@@ -195,6 +203,11 @@
   transform: translateX(-50%);
   width: 515px;
   filter: drop-shadow(20.85px 12.51px 104px rgba(9, 20, 50, 0.15));
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.phonesContainer:hover .phoneCenter {
+  transform: translateX(-50%) scale(1.03);
 }
 
 .phoneCenter img {
@@ -211,6 +224,11 @@
   top: 40px;
   width: 495px;
   filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.phonesContainer:hover .phoneLeft {
+  transform: translateX(-12px);
 }
 
 .phoneLeft img {
@@ -227,6 +245,11 @@
   top: 40px;
   width: 495px;
   filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.phonesContainer:hover .phoneRight {
+  transform: translateX(12px);
 }
 
 .phoneRight img {
@@ -247,6 +270,12 @@
   pointer-events: none;
   z-index: 0;
   border-radius: 50%;
+  transition: filter 0.5s ease;
+}
+
+.phonesContainer:hover .phoneGlow {
+  filter: blur(120px);
+  background: rgba(30, 50, 80, 0.6);
 }
 
 /* Responsive */

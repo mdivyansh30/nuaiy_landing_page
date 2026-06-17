@@ -1,3 +1,7 @@
+"use client";
+
+import { useScrollReveal } from "@/lib/useScrollReveal";
+import { useStaggerReveal } from "@/lib/useStaggerReveal";
 import styles from "./LearningPaths.module.css";
 
 const paths = [
@@ -52,24 +56,32 @@ const paths = [
 ];
 
 export default function LearningPaths() {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
+  const { containerRef: gridRef, isVisible: gridVisible } = useStaggerReveal();
+
   return (
     <section id="paths" className={`section ${styles.paths}`} aria-label="Learning Paths">
       <div className="container">
-        <p className="section__label">Courses &amp; paths</p>
-        <h2 className="section__title">
-          Six learning paths. Which one is yours?
-        </h2>
-        <p className="section__subtitle">
-          Each path is a complete career arc — designed to take you from beginner to a
-          real, hireable skill set, with project-based learning at every step.
-        </p>
+        <div
+          ref={headerRef as React.RefObject<HTMLDivElement>}
+          className={`reveal ${headerVisible ? "reveal--visible" : ""}`}
+        >
+          <p className="section__label">Courses &amp; paths</p>
+          <h2 className="section__title">
+            Six learning paths. Which one is yours?
+          </h2>
+          <p className="section__subtitle">
+            Each path is a complete career arc — designed to take you from beginner to a
+            real, hireable skill set, with project-based learning at every step.
+          </p>
+        </div>
 
-        <div className={styles.pathGrid}>
+        <div className={styles.pathGrid} ref={gridRef as React.RefObject<HTMLDivElement>}>
           {paths.map((path, i) => (
             <article
               key={path.title}
-              className={styles.pathCard}
-              style={{ animationDelay: `${i * 0.08}s` }}
+              className={`${styles.pathCard} stagger-child ${gridVisible ? "stagger-child--visible" : ""}`}
+              style={{ "--stagger-index": i } as React.CSSProperties}
             >
               <div className={styles.pathHeader}>
                 <span

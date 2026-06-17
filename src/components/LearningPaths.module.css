@@ -17,13 +17,42 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  animation: fadeInUp 0.6s ease both;
-  transition: border-color var(--transition-base), transform var(--transition-base);
+  transition: border-color 0.4s ease,
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer border glow on hover */
+.pathCard::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius-card);
+  background: linear-gradient(135deg, transparent 30%, rgba(151, 84, 255, 0.3) 50%, transparent 70%);
+  background-size: 300% 300%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.pathCard:hover::before {
+  opacity: 1;
+  animation: borderShimmer 2s ease infinite;
+}
+
+@keyframes borderShimmer {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
 }
 
 .pathCard:hover {
-  border-color: rgba(151, 122, 224, 0.35);
-  transform: translateY(-2px);
+  border-color: rgba(151, 122, 224, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(151, 84, 255, 0.1),
+              0 0 0 1px rgba(151, 122, 224, 0.2);
 }
 
 .pathHeader {
@@ -44,6 +73,11 @@
   letter-spacing: 1.5px;
   text-transform: uppercase;
   width: fit-content;
+  transition: box-shadow 0.3s ease;
+}
+
+.pathCard:hover .pathBadge {
+  box-shadow: 0 0 12px currentColor;
 }
 
 .pathTitle {
@@ -98,11 +132,20 @@
   background: none;
   border: none;
   cursor: pointer;
-  transition: gap var(--transition-fast);
+  transition: gap 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.3s ease;
+}
+
+.pathCta svg {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .pathCta:hover {
   gap: 12px;
+}
+
+.pathCta:hover svg {
+  transform: translateX(4px);
 }
 
 @media (max-width: 1024px) {

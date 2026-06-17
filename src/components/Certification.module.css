@@ -40,6 +40,7 @@
 .certMockup {
   display: flex;
   justify-content: center;
+  perspective: 800px;
 }
 
 .certCard {
@@ -54,6 +55,15 @@
     0 20px 60px rgba(0, 0, 0, 0.4);
   position: relative;
   overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s ease;
+}
+
+.certCard:hover {
+  transform: rotateX(4deg) rotateY(-3deg) translateY(-6px);
+  box-shadow:
+    0 0 40px rgba(59, 130, 246, 0.15),
+    0 30px 80px rgba(0, 0, 0, 0.5);
 }
 
 .certCard::before {
@@ -146,12 +156,17 @@
   border-radius: var(--radius-lg);
   padding: 28px 16px;
   text-align: center;
-  transition: all var(--transition-base);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .statCard:hover {
   border-color: rgba(151, 122, 224, 0.35);
   box-shadow: 0px 0px 0px #0783F5, 3px 2px 17.3px #62B4FF;
+  transform: translateY(-4px) scale(1.03);
+}
+
+.statCard:hover .statValue {
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
 }
 
 .statValue {
@@ -160,6 +175,7 @@
   font-weight: 800;
   color: var(--accent-blue);
   margin-bottom: 6px;
+  transition: text-shadow 0.4s ease;
 }
 
 .statLabel {
