@@ -109,33 +109,13 @@ export default function LearningEcosystem() {
             ref={mockupRef as React.RefObject<HTMLDivElement>}
           >
             <div className={styles.mockupGlow} />
-            <div className={styles.phoneBevel}>
-              <div className={styles.phoneScreen}>
-                <div className={styles.screenHeader}>
-                  <div className={styles.screenDot} />
-                  <span className={styles.screenLogo}>nuaiy</span>
-                  <div className={styles.screenDot} />
-                </div>
-                <div className={styles.screenBody}>
-                  <div className={styles.screenCard}>
-                    <div className={styles.cardTitle}>Today&apos;s Quest</div>
-                    <div className={styles.cardBar}>
-                      <div className={styles.cardBarFill} style={{ width: '72%' }} />
-                    </div>
-                    <div className={styles.cardMeta}>72% complete</div>
-                  </div>
-                  <div className={styles.screenCard}>
-                    <div className={styles.cardTitle}>XP Earned</div>
-                    <div className={styles.xpValue}>2,450 XP</div>
-                    <div className={styles.cardMeta}>🔥 14 day streak</div>
-                  </div>
-                  <div className={styles.screenCard}>
-                    <div className={styles.cardTitle}>AI Lab</div>
-                    <div className={styles.cardMeta}>3 tools unlocked</div>
-                    <div className={styles.screenBtn}>Enter Lab →</div>
-                  </div>
-                </div>
-              </div>
+            <div className={styles.phoneWrapper}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/iPhone_learning_eco.png"
+                alt="nuaiy learning ecosystem app screen"
+                className={styles.phoneImg}
+              />
             </div>
           </div>
         </div>
